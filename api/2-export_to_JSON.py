@@ -6,8 +6,8 @@ the number of tasks completed, and the titles of the completed tasks.
 """
 
 import requests
-import sys
 import json
+import sys
 
 TASK_URL = "https://jsonplaceholder.typicode.com/todos"
 USER_URL = "https://jsonplaceholder.typicode.com/users/"
@@ -51,6 +51,6 @@ def employee_info(user_id: str):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        raise ValueError("Usage: 1-export_to_CSV.py <employee_id>")
+        raise ValueError("Usage: 2-export_to_JSON.py <employee_id>")
     user_id = sys.argv[1]
     employee_info(user_id)

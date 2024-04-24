@@ -5,8 +5,8 @@ anddisplays the employee's name,
 the number of tasks completed, and the titles of the completed tasks.
 """
 
-import requests
 import json
+import requests
 import sys
 
 TASK_URL = "https://jsonplaceholder.typicode.com/todos"
@@ -38,7 +38,7 @@ def employee_info(user_id: str):
         task_info = {
             "task": task.get("title"),
             "completed": task.get("completed"),
-            "username": name
+            "username": name,
         }
         tasks.append(task_info)
 

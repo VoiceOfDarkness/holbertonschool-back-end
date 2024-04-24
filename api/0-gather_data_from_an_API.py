@@ -32,16 +32,16 @@ def employee_info(user_id: str):
 
     name = user_response.get("name")
     total_tasks = len(task_response)
-    done_tasks = len([task for task in task_response if
-                      task.get("completed") is True])
+    done_tasks = len([task for task in task_response
+                      if task.get("completed") is True])
     title_tasks = [
-        task.get("title") for task in task_response if
-        task.get("completed") is True
+        task.get("title") for task in task_response
+        if task.get("completed") is True
     ]
 
-    result = "Employee {} is done withtasks({}/{}):\n\t ".format(name,
-                                                                 done_tasks,
-                                                                 total_tasks)
+    result = "Employee {} is done with tasks({}/{}):\n\t ".format(
+        name, done_tasks, total_tasks
+    )
     result += "\n\t ".join(title_tasks)
 
     return result

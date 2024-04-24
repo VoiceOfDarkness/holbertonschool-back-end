@@ -31,18 +31,6 @@ def employee_info(user_id: str):
     user_response = requests.get(USER_URL + user_id).json()
 
     name = user_response.get("username")
-    total_tasks = len(task_response)
-    done_tasks = len([task for task in task_response
-                      if task.get("completed") is True])
-    title_tasks = [
-        task.get("title") for task in task_response
-        if task.get("completed") is True
-    ]
-
-    result = "Employee {} is done with tasks({}/{}):\n\t ".format(
-        name, done_tasks, total_tasks
-    )
-    result += "\n\t ".join(title_tasks)
 
     with open(f"{user_id}.csv", "w") as f:
         for task in task_response:

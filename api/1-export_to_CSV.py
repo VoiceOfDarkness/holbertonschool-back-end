@@ -34,7 +34,7 @@ def employee_info(user_id: str):
     name = user_response.get("username")
 
     with open(f"{user_id}.csv", "w") as f:
-        writer = csv.writer(f, quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        writer = csv.writer(f, quoting=csv.QUOTE_ALL)
         for task in task_response:
             writer.writerow([user_id, name, task.get("completed"),
                              task.get("title")])

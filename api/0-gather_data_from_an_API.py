@@ -48,5 +48,7 @@ def employee_info(user_id: str):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        raise ValueError("Usage: 0-gather_data_from_an_API.py <employee_id>")
     user_id = sys.argv[1]
     print(employee_info(user_id))

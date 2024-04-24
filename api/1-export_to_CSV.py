@@ -5,6 +5,7 @@ anddisplays the employee's name,
 the number of tasks completed, and the titles of the completed tasks.
 """
 
+import csv
 import requests
 import sys
 
@@ -33,14 +34,14 @@ def employee_info(user_id: str):
     name = user_response.get("username")
 
     with open(f"{user_id}.csv", "w") as f:
+        writer = csv.writer(f, quotechar='"', quoting=csv.QUOTE_MINIMAL)
         for task in task_response:
-            f.write('"{}","{}","{}","{}"\n'.format(
-                user_id, name, task.get("completed"), task.get("title")
-            ))
+            writer.writerow([user_id, name, task.get("completed"),
+                             task.get("title")])
 
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        raise ValueError("Usage: 0-gather_data_from_an_API.py <employee_id>")
+        raise ValueError("Usage: 1-export_to_CSV.py <employee_id>")
     user_id = sys.argv[1]
     employee_info(user_id)

@@ -30,7 +30,7 @@ def employee_info(user_id: str):
     task_response = requests.get(TASK_URL + "?userId=" + user_id).json()
     user_response = requests.get(USER_URL + user_id).json()
 
-    name = user_response.get("name")
+    name = user_response.get("username")
     total_tasks = len(task_response)
     done_tasks = len([task for task in task_response
                       if task.get("completed") is True])
